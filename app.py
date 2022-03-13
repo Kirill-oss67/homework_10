@@ -25,6 +25,7 @@ def show_all_users(candidates_list):
 
 
 def find_user_by_id(candidate_list, user_id):
+    """Функция возвращает информацию о юзере по ID"""
     user_string = ""
     for candidate in candidate_list:
         if candidate["id"] == user_id:
@@ -39,6 +40,7 @@ def find_user_by_id(candidate_list, user_id):
 
 
 def find_user_by_skills(candidate_list, skills):
+    """Функция возвращает информацию о юзере по навыкам(skills)"""
     user_string = ""
     for candidate in candidate_list:
         skill_list = candidate["skills"].lower().split(", ")
@@ -50,10 +52,6 @@ def find_user_by_skills(candidate_list, skills):
 
 
 
-
-
-# list = show_all_users(list_candidates)
-# print(list)
 # ЗАГРУЗКА ВОПРОСОВ в список
 list_candidates = json_read()
 
@@ -70,9 +68,12 @@ def page_index():
 @app.route("/candidate/<int:id>")
 def page_candidate(id):
     return f'<pre>{find_user_by_id(list_candidates, id)}</pre>'
+
+
 @app.route("/skills/<skill>")
 def page_user_skills(skill):
     return f'<pre>{find_user_by_skills(list_candidates, skill)}</pre>'
 
 
 app.run()
+# https://github.com/Kirill-oss67/homework_10
